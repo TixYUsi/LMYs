@@ -17,7 +17,9 @@ ttlhd=''    多账号@隔开
 
 
 const $ = new Env('太太乐')
+const notify = $.isNode() ? require("./sendNotify") : ``;
 const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1
+const notifyttt = 1 // 0为关闭外部推送，1为所有通知
 var request = require("request");
 let status;
 status = (status = ($.getval("ttlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
