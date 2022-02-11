@@ -16,8 +16,9 @@ ttlhd=''    多账号@隔开
 */
 
 
-const $ = new Env('太太乐');
-const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1;
+const $ = new Env('太太乐')
+const notifyFlag = 1; //0为关闭通知，1为打开通知,默认为1
+const logs = 0; // 0为关闭日志，1为开启
 var request = require("request");
 let status;
 status = (status = ($.getval("ttlstatus") || "1") ) > 1 ? `${status}` : ""; // 账号扩展字符
@@ -41,6 +42,39 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
           for (let i = 2; i <= ttlcount; i++) {
             ttlhdArr.push($.getdata(`ttlhd${i}`))
             }
+
+!(async () => {     
+         if(typeof $request !== "undefined"){    
+    }
+    else {       
+        await UserInfo()
+        await signin()
+        await signinad()
+        await $.wait(15100)
+        await dailyad()
+        await $.wait(15100)
+        await xgbox()
+        await $.wait(15100)
+        await xgboxad()
+        await $.wait(15100)
+        await xgboxad2()      
+    }
+       
+})()
+.catch((e) => $.logErr(e))
+.finally(() => $.done())
+
+async function showmsg() {  
+    notifyBody = jsname + "运行通知\n\n" + notifyStr  
+    if (notifyFlag != 1) {
+        console.log(notifyBody);
+    }
+
+    if (notifyFlag == 1) {
+        $.msg(notifyBody);
+        //if ($.isNode()){await notify.sendNotify($.name, notifyBody );}
+    }
+}
     console.log(`------------- 共${ttlhdArr.length}个账号-------------\n`)
       for (let i = 0; i < ttlhdArr.length; i++) {
         if (ttlhdArr[i]) {
