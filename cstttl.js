@@ -44,38 +44,20 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
             ttlhdArr.push($.getdata(`ttlhd${i}`))
             }
 
-!(async () => {     
-         if(typeof $request !== "undefined"){    
-    }
-    else {       
-        await UserInfo()
-        await signin()
-        await signinad()
-        await $.wait(15100)
-        await dailyad()
-        await $.wait(15100)
-        await xgbox()
-        await $.wait(15100)
-        await xgboxad()
-        await $.wait(15100)
-        await xgboxad2()      
-    }
-       
-})()
-.catch((e) => $.logErr(e))
-.finally(() => $.done())
-
-async function showmsg() {  
-    notifyBody = jsname + "运行通知\n\n" + notifyStr  
-    if (notifyFlag != 1) {
-        console.log(notifyBody);
-    }
-
+//通知
+async function showmsg() {
+    if(!notifyStr) return;
+    const notify = $.isNode() ? require('./sendNotify') : '';
+    if(!notify) return;
+    notifyBody = jsname + "运行通知\n\n" + notifyStr
     if (notifyFlag == 1) {
         $.msg(notifyBody);
-        //if ($.isNode()){await notify.sendNotify($.name, notifyBody );}
+        if($.isNode()){await notify.sendNotify($.name, notifyBody );}
+    } else {
+        console.log(notifyBody);
     }
 }
+
     console.log(`------------- 共${ttlhdArr.length}个账号-------------\n`)
       for (let i = 0; i < ttlhdArr.length; i++) {
         if (ttlhdArr[i]) {
