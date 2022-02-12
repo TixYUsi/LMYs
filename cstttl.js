@@ -58,6 +58,24 @@ async function showmsg() {
     }
 }
 
+//pushDear
+async function pushDear(str) {
+    if(!PushDearKey) return;
+    if(!str) return;
+    
+    console.log('\n============= PushDear 通知 =============\n')
+    console.log(str)
+    let urlObject = {
+        url: `https://api2.pushdeer.com/message/push?pushkey=${PushDearKey}&text=${encodeURIComponent(str)}`,
+        headers: {},
+    };
+    await httpRequest('get',urlObject)
+    let result = httpResult;
+    let retStr = result.content.result==false ? '失败' : '成功'
+    console.log(`\n========== PushDear 通知发送${retStr} ==========\n`)
+}
+////////////////////////////////////////////////////////////////////
+
     console.log(`------------- 共${ttlhdArr.length}个账号-------------\n`)
       for (let i = 0; i < ttlhdArr.length; i++) {
         if (ttlhdArr[i]) {
