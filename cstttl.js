@@ -44,37 +44,6 @@ var timestamp = Math.round(new Date().getTime()/1000).toString();
             ttlhdArr.push($.getdata(`ttlhd${i}`))
             }
 
-//通知
-async function showmsg() {
-    if(!notifyStr) return;
-    const notify = $.isNode() ? require('./sendNotify') : '';
-    if(!notify) return;
-    notifyBody = jsname + "运行通知\n\n" + notifyStr
-    if (notifyFlag == 1) {
-        $.msg(notifyBody);
-        if($.isNode()){await notify.sendNotify($.name, notifyBody );}
-    } else {
-        console.log(notifyBody);
-    }
-}
-
-//pushDear
-async function pushDear(str) {
-    if(!PushDearKey) return;
-    if(!str) return;
-    
-    console.log('\n============= PushDear 通知 =============\n')
-    console.log(str)
-    let urlObject = {
-        url: `https://api2.pushdeer.com/message/push?pushkey=${PushDearKey}&text=${encodeURIComponent(str)}`,
-        headers: {},
-    };
-    await httpRequest('get',urlObject)
-    let result = httpResult;
-    let retStr = result.content.result==false ? '失败' : '成功'
-    console.log(`\n========== PushDear 通知发送${retStr} ==========\n`)
-}
-////////////////////////////////////////////////////////////////////
 
     console.log(`------------- 共${ttlhdArr.length}个账号-------------\n`)
       for (let i = 0; i < ttlhdArr.length; i++) {
@@ -141,6 +110,39 @@ $.log(ttlhd)
  
 }
 }
+
+//通知
+async function showmsg() {
+    if(!notifyStr) return;
+    const notify = $.isNode() ? require('./sendNotify') : '';
+    if(!notify) return;
+    notifyBody = jsname + "运行通知\n\n" + notifyStr
+    if (notifyFlag == 1) {
+        $.msg(notifyBody);
+        if($.isNode()){await notify.sendNotify($.name, notifyBody );}
+    } else {
+        console.log(notifyBody);
+    }
+}
+
+//pushDear
+async function pushDear(str) {
+    if(!PushDearKey) return;
+    if(!str) return;
+    
+    console.log('\n============= PushDear 通知 =============\n')
+    console.log(str)
+    let urlObject = {
+        url: `https://api2.pushdeer.com/message/push?pushkey=${PushDearKey}&text=${encodeURIComponent(str)}`,
+        headers: {},
+    };
+    await httpRequest('get',urlObject)
+    let result = httpResult;
+    let retStr = result.content.result==false ? '失败' : '成功'
+    console.log(`\n========== PushDear 通知发送${retStr} ==========\n`)
+}
+////////////////////////////////////////////////////////////////////
+
 async function kcjk(giftId){
  return new Promise((resolve) => {
      
