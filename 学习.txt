@@ -1,0 +1,27 @@
+频道：https://t.me/tom_ww
+
+视频可能比较啰嗦，望各位大佬不要吐槽  感谢   
+
+教程1
+日期：2021-09-14 15:51:43
+录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=13ddbf0a-c531-4578-accd-3b57591d79ba&from=3
+访问密码：1BzYnk85
+
+教程2
+日期：2021-09-14 17:47:40
+录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=04c1e2d4-84d7-4a7f-bdd9-3e97554b2fe5&from=3
+访问密码：ylFvo8c3
+
+教程3
+会议录制：Js进阶教程   实战自动看广告
+日期：2021-09-15 16:44:30
+录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=65ced96e-525c-4631-a0a2-4386e83a3746&from=3
+访问密码：NjSZo87N
+
+之前也有单独录制过教程  https://www.aliyundrive.com/s/jZ8EGgz4T7y  大家将就看一下吧
+
+以下是模板地址，可以对比一下两个模板的区别，也就是get和post的区别    方法就是百度：文本比对工具 
+
+get  模板地址：https://raw.githubusercontent.com/xl2101200/-/main/get.js
+
+post 模板地址：https://raw.githubusercontent.com/xl2101200/-/main/post.js
