@@ -1,4 +1,3 @@
-
 var url = $request.url;
 const path1 = "api.openai.com/v1/completions";
 
